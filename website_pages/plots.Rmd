@@ -1,0 +1,47 @@
+---
+title: "Plots"
+author: "Cameron Chesbrough"
+date: "2024-10-28"
+output:  
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(flexdashboard)
+library(tidyverse)
+library(ggplot2)
+library(plotly)
+```
+
+```{r}
+noaa_df = read_csv(file = "/Users/cameronchesbrough/camchesbro/website_pages/nynoaadat.csv")
+
+
+noaa_df = noaa_df %>%
+  janitor::clean_names() %>%
+  drop_na() %>%
+  mutate(date = as.character(date)) %>%
+  filter(date >= 2000) %>%
+  filter(day(date)==24) %>%
+  filter(month(date)==12)
+
+noaa_df %>%
+  plot_ly(x = ~snwd, y = ~snow, type = "scatter", mode = "markers",
+    text = ~date, alpha = 0.5)
+
+noaa_df %>%
+  filter(snow > 0) %>%
+  count(date) %>%
+  plot_ly(x = ~date, y = ~n, type = "bar", mode = "markers",
+    alpha = 0.5)
+
+noaa_df %>%
+  plot_ly(x = ~date, y = ~snow, type = "box",
+    alpha = 0.5)
+
+
+
+```
