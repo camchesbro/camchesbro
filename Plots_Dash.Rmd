@@ -12,7 +12,7 @@ library(tidyverse)
 library(ggplot2)
 library(plotly)
 
-noaa_df = read_csv(file = "/Users/cameronchesbrough/camchesbro/website_pages/nynoaadat.csv")
+noaa_df = read_csv(file = "/Users/cameronchesbrough/camchesbro/nynoaadat.csv")
 
 
 noaa_df = noaa_df %>%
