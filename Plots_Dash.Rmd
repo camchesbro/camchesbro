@@ -1,5 +1,5 @@
 ---
-title: "White Christmas"
+title: "Is it a White Christmas?"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
