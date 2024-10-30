@@ -20,7 +20,7 @@ noaa_df = noaa_df %>%
   drop_na() %>%
   mutate(date = as.character(date)) %>%
   filter(date >= 2000) %>%
-  filter(day(date)==24) %>%
+  filter(day(date)==25) %>%
   filter(month(date)==12)
 
 ```
@@ -28,12 +28,14 @@ noaa_df = noaa_df %>%
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Scatterplot of Snowfall (mm) by Snowdepth (mm):
+### Scatterplot of Snowfall by Snowdepth:
 
 ```{r}
 noaa_df %>%
   plot_ly(x = ~snwd, y = ~snow, type = "scatter", mode = "markers",
-    text = ~date, alpha = 0.5)
+    text = ~date, alpha = 0.5) %>%
+  layout(xaxis = list(title = "Snowdepth (mm)"),
+         yaxis = list(title = "Snowfall (mm)"))
 ```
 
 Column {data-width=350}
@@ -46,7 +48,9 @@ noaa_df %>%
   filter(snow > 0) %>%
   count(date) %>%
   plot_ly(x = ~date, y = ~n, type = "bar", mode = "markers",
-    alpha = 0.5)
+    alpha = 0.5) %>%
+  layout(xaxis = list(title = "Christmas Year"),
+         yaxis = list(title = "Number of Weather Stations"))
 ```
 
 ### Boxplot showing recorded snowfall in each weather station by each Christmas:
@@ -54,6 +58,8 @@ noaa_df %>%
 ```{r}
 noaa_df %>%
   plot_ly(x = ~date, y = ~snow, type = "box",
-    alpha = 0.5)
+    alpha = 0.5) %>%
+  layout(xaxis = list(title = "Christmas Year"),
+         yaxis = list(title = "Snowfall (mm)"))
 ```
 
