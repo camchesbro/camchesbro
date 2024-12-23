@@ -1,5 +1,4 @@
-## Hi there 👋
-
+Current intern at CMCS and graduate student at Columbia Mailman studying Biostatistics.
 <!--
 **camchesbro/camchesbro** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
